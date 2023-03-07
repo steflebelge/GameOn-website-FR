@@ -216,13 +216,9 @@ input.text-control {
   margin-top: 7px;
   margin-bottom: 7px;
   text-align: right;
-  line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
-  width: max-content;
   float: right;
-  min-height: 3px;
-  min-width: 100%;
 }
 .formData[data-error-visible="true"]::after {
   opacity: 1;

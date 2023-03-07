@@ -56,11 +56,6 @@ document.querySelector('form[name="reserve"]').addEventListener("submit", functi
 if (modalbg.querySelector('input[name="location"]:checked'))
     modalbg.querySelector('input[name="location"]:checked').checked = false;
 
-//On pré remplit les content des formData avec " "
-document.querySelectorAll("div.formData").forEach(function (divTmp) {
-    divTmp.dataset.error = " ";
-});
-
 //set de la date de naissance minimum (12ans)
 let now = new Date();
 now.setFullYear( now.getFullYear() - 12 );
@@ -77,7 +72,6 @@ function validateForm() {
     //réinitialise les erreurs du formulaire
     //On pré remplit les content des formData avec " "
     document.querySelectorAll("div.formData[data-error-visible='true']").forEach(function (divTmp) {
-        divTmp.dataset.error = " ";
         divTmp.dataset.errorVisible = "false";
     });
 
@@ -107,7 +101,7 @@ function validateForm() {
 
 //fonction de gestion d'une erreur
 function errorInField(elt) {
-    debugger
+    
     //recuperation du message d'erreur de l'api validation
     let msgError = elt.validationMessage;
 
