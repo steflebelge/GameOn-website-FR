@@ -37,10 +37,9 @@ async function quitModal() {
 }
 
 
-
-
 //______________________________________________
 //Chargement de la page :
+
 //rajout de l'event onclick du menu burger
 document.querySelector('a.icon').addEventListener("click", editNav);
 
@@ -49,8 +48,8 @@ document.querySelector('span.close').addEventListener("click", quitModal);
 
 //rajout de l'event onsubmit du formulaire
 document.querySelector('form[name="reserve"]').addEventListener("submit", function (event) {
-    if (!validateForm())
-        event.preventDefault();
+    validateForm();
+    event.preventDefault();
 });
 
 //si bouton radio coché au chargement, on le décoche
@@ -61,10 +60,14 @@ if (modalbg.querySelector('input[name="location"]:checked'))
 document.querySelectorAll("div.formData").forEach(function (divTmp) {
     divTmp.dataset.error = " ";
 });
+
+//set de la date de naissance minimum (12ans)
+let now = new Date();
+now.setFullYear( now.getFullYear() - 12 );
+let dateMax = now.toISOString().split("T")[0];
+document.getElementById('birthdate').setAttribute("max", dateMax);
+
 //______________________________________________
-
-
-
 
 
 //fonction de validation du formulaire
@@ -98,19 +101,20 @@ function validateForm() {
         errorInField(document.querySelector('input#checkbox1'));
     }
 
-    return isValid;
+    if (isValid)
+        document.querySelector('div.modal-body').innerHTML = "<h1 id='formValid'>Merci ! Votre réservation a été reçue.</h1>";
 }
 
 //fonction de gestion d'une erreur
 function errorInField(elt) {
     debugger
     //recuperation du message d'erreur de l'api validation
-    let msgError = elt.validationMessage ;
+    let msgError = elt.validationMessage;
 
     //cas specifique : location1 car validation message = "" et msg des CGU
-    if(elt.id === "location1")
+    if (elt.id === "location1")
         msgError = "Veuillez selectionner une ville."
-    else if(elt.id === "checkbox1")
+    else if (elt.id === "checkbox1")
         msgError = "Veuillez accepter les conditions d'utilisations pour pouvoir poursuivre."
 
     //recuperation de la div.formData correspondante a l'element
