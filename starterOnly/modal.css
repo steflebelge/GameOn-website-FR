@@ -215,10 +215,11 @@ input.text-control {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
   opacity: 0;
   transition: 0.3s;
-  float: right;
+  text-align: left;
+  float: left;
+  width: 100%;
 }
 .formData[data-error-visible="true"]::after {
   opacity: 1;
@@ -544,6 +545,34 @@ div.formData:nth-child(8){
   margin-top: 17px;
 }
 
-h1#formValid{
-  color: green;
+/* formulaire non envoyé */
+div.modal-body:not(.valid) div#result{
+  display: none;
+}
+
+
+/* Formulaire envoyé */
+div.modal-body.valid{
+
+}
+
+div.modal-body.valid div#result{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+
+  height: 50vh;
+  justify-content: center;
+  position: relative;
+}
+
+div.modal-body.valid div#result button{
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+}
+
+div.modal-body.valid form{
+  display: none;
 }

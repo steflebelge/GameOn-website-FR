@@ -45,6 +45,7 @@ document.querySelector('a.icon').addEventListener("click", editNav);
 
 //rajout de l'event close de la modale
 document.querySelector('span.close').addEventListener("click", quitModal);
+document.getElementById('closeModalPostEnvoiForm').addEventListener("click", quitModal);
 
 //rajout de l'event onsubmit du formulaire
 document.querySelector('form[name="reserve"]').addEventListener("submit", function (event) {
@@ -97,7 +98,7 @@ function validateForm() {
 
     //si le formulaire est valide, on affiche le message de confirmation
     if (isValid)
-        document.querySelector('div.modal-body').innerHTML = "<h1 id='formValid'>Merci ! Votre réservation a été reçue.</h1>";
+        document.querySelector('div.modal-body').classList.add('valid');
 }
 
 //fonction de gestion d'une erreur
