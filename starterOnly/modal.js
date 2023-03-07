@@ -23,8 +23,24 @@ function launchModal() {
 
 //RAJOUTS
 
+//fonction de sleep
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// launch modal form
+async function quitModal() {
+  modalbg.firstElementChild.style.animationName = "modalClose";
+  await sleep(750);
+  modalbg.style.display = "none";
+  modalbg.firstElementChild.style.animationName = "modalopen";
+}
+
 //rajout de l'event onclick du menu burger
 document.querySelector('a.icon').addEventListener("click", editNav);
+
+//rajout de l'event close de la modale
+document.querySelector('span.close').addEventListener("click", quitModal);
 
 //rajout de l'event onsubmit du formulaire
 document.querySelector('form[name="reserve"]').addEventListener("submit", validateForm)

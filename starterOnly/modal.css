@@ -525,4 +525,13 @@ footer {
     opacity: 1;
   }
 }
+@keyframes modalClose {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+}
 
