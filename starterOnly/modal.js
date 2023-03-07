@@ -75,7 +75,7 @@ function validateForm() {
         divTmp.dataset.errorVisible = "false";
     });
 
-    //parcours des input.text-control
+    //parcours des input.text-control + verification de leur validité
     modalbg.querySelectorAll('input.text-control').forEach(function (inputTmp) {
         if (!inputTmp.checkValidity()) {
             isValid = false;
@@ -95,13 +95,14 @@ function validateForm() {
         errorInField(document.querySelector('input#checkbox1'));
     }
 
+    //si le formulaire est valide, on affiche le message de confirmation
     if (isValid)
         document.querySelector('div.modal-body').innerHTML = "<h1 id='formValid'>Merci ! Votre réservation a été reçue.</h1>";
 }
 
 //fonction de gestion d'une erreur
 function errorInField(elt) {
-    
+
     //recuperation du message d'erreur de l'api validation
     let msgError = elt.validationMessage;
 
