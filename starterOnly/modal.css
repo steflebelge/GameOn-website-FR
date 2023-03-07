@@ -200,7 +200,7 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
-.text-control {
+input.text-control {
   margin: 0;
   padding: 8px;
   width: 100%;
@@ -219,6 +219,10 @@ input {
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
+  width: max-content;
+  float: right;
+  min-height: 3px;
+  min-width: 100%;
 }
 .formData[data-error-visible="true"]::after {
   opacity: 1;
@@ -525,6 +529,9 @@ footer {
     opacity: 1;
   }
 }
+
+
+/*  Rajouts */
 @keyframes modalClose {
   from {
     opacity: 1;
@@ -535,3 +542,8 @@ footer {
   }
 }
 
+p.text-label,
+div.formData:last-child,
+div.formData:nth-child(8){
+  margin-top: 17px;
+}
