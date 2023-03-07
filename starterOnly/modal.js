@@ -21,3 +21,15 @@ function launchModal() {
 }
 
 
+//RAJOUTS
+
+//rajout de l'event onclick du menu burger
+document.querySelector('a.icon').addEventListener("click", editNav);
+
+//rajout de l'event onsubmit du formulaire
+document.querySelector('form[name="reserve"]').addEventListener("submit", validateForm)
+
+//fonction de validation du formulaire
+function validateForm() {
+
+}
