@@ -11,10 +11,8 @@
 /* Landing Page */
 
 body {
-  margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -540,7 +538,6 @@ footer {
 }
 
 p.text-label,
-div.formData:last-child,
 div.formData:nth-child(8){
   margin-top: 17px;
 }
@@ -552,17 +549,12 @@ div.modal-body:not(.valid) div#result{
 
 
 /* Formulaire envoyé */
-div.modal-body.valid{
-
-}
-
 div.modal-body.valid div#result{
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
-
-  height: 50vh;
+  height: 70vh;
   justify-content: center;
   position: relative;
 }
@@ -575,4 +567,13 @@ div.modal-body.valid div#result button{
 
 div.modal-body.valid form{
   display: none;
+}
+
+@media screen and (max-width: 400px) {
+  .hero-headline {
+    font-size: 3.5rem;
+  }
+  .hero-content {
+    min-width: unset;
+  }
 }

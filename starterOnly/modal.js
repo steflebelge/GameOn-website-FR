@@ -34,6 +34,12 @@ async function quitModal() {
     await sleep(750);
     modalbg.style.display = "none";
     modalbg.firstElementChild.style.animationName = "modalopen";
+
+    //si formulaire envoyé -> reinitialise
+    if(modalbg.querySelector('div.modal-body.valid')){
+        modalbg.querySelector('div.modal-body.valid').classList.remove('valid');
+        modalbg.querySelector('form').reset();
+    }
 }
 
 
@@ -96,9 +102,26 @@ function validateForm() {
         errorInField(document.querySelector('input#checkbox1'));
     }
 
-    //si le formulaire est valide, on affiche le message de confirmation
-    if (isValid)
+    //si le formulaire est valide, on recupere puis prepare les données pour un envoi au back end
+    // et on affiche le message de confirmation
+    if (isValid) {
+        //recuperation du FormData correspondant au form
+        let formData = new FormData(document.querySelector('form'));
+
+        //preparation de l'objet Json a envoyer via xhr/fetch
+        let jsonData = {};
+
+        //iteration sur les entrees du formulaire pour completer la data a envoyer
+        formData.forEach(function (value, key) {
+            jsonData[key] = value;
+        });
+
+        //transforme le json en string pour envoi via xhr/fetch
+        let dataToSend = JSON.stringify(jsonData);
+
+        //affiche le message de validation de l'envoi du formulaire
         document.querySelector('div.modal-body').classList.add('valid');
+    }
 }
 
 //fonction de gestion d'une erreur
