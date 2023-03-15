@@ -1,5 +1,8 @@
+"use strict"
+
+
 function editNav() {
-    var x = document.getElementById("myTopnav");
+    let x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
         x.className += " responsive";
     } else {
@@ -112,9 +115,9 @@ function validateForm() {
         let jsonData = {};
 
         //iteration sur les entrees du formulaire pour completer la data a envoyer
-        formData.forEach(function (value, key) {
+        for(const [key, value] of formData.entries()){
             jsonData[key] = value;
-        });
+        }
 
         //transforme le json en string pour envoi via xhr/fetch
         let dataToSend = JSON.stringify(jsonData);
